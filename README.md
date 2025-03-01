@@ -10,7 +10,7 @@ Blur-KMS es una herramienta de línea de comandos creada para facilitar la Insta
 
 Si tiene Alguna Duda al Respecto Sobre las Claves KMS que ultiliza el programa o descubrir un poco de su funcionamiento, Puede Visitar El Siguiente Enlace De Microsoft: https://learn.microsoft.com/es-es/windows-server/get-started/kms-client-activation-keys?tabs=server2025%2Cwindows1110ltsc%2Cversion1803%2Cwindows81
 
-Esta Herramienta esta Diseñada en Python Por lo Cual es Nesesario Instalar El Programa Python (https://www.python.org/downloads/). Pensando en esa Nesecidad el usuario puede decidir si instalar python manualmente o dejandolo en manos de Blur-KMS.
+Esta Herramienta esta Diseñada en Python Por lo Cual es Nesesario Instalar El Programa Python (https://www.python.org/downloads/). Pensando en esa Nesecidad el usuario puede decidir si instalar python manualmente o dejandolo en manos de Blur-KMS (Por Defecto Se Instalara La Version 3.13.2 de Python).
 
 ## Características de Blur-KMS
 
