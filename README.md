@@ -15,7 +15,7 @@ Esta Herramienta esta Diseñada en Python Por lo Cual es Nesesario Instalar El P
 ## Características de Blur-KMS
 
 - Instalacion de Python (Manual o Automatico).
-- Instalacion de Claves KMS (Windows o Office)
+- Instalacion de Claves KMS (Windows o/u Office)
 - Interfaz de linea de Comandos intuitiva.
   
 ## Requisitos
