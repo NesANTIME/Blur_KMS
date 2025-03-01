@@ -1,23 +1,34 @@
 @echo off
 setlocal enabledelayedexpansion
 title Blur_KMS v1.0 by NesAnTime
+
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo Es Nesesario Ejecutar Como Administrador...
+    echo.
+    echo Solicitando Permiso! Acepte para Continuar...
+    timeout /t 2 >nul
+    powershell -Command "Start-Process cmd -ArgumentList '/c %~s0' -Verb RunAs"
+    exit /b
+)
+
 :inicio
 cls
 echo =======================================
 echo       MENU DE OPCIONES (Blur_KMS)     
 echo =======================================
 echo.
-echo [1] Instalar Python (Automatico - Via CMD)
-echo [2] Instalar Python (Manual)
-echo [3] Ejecutar Activador Blur_KMS
+echo [1] Ejecutar Blur_KMS
+echo [2] Instalar Python (Automatico - Via CMD)
+echo [3] Instalar Python (Manual)
 echo [4] Salir
 echo ==========================
 echo.
 set /p opcion= Seleccione una opcion: 
 
-if "%opcion%"=="1" goto instalar_python
-if "%opcion%"=="2" goto instalar_py
-if "%opcion%"=="3" goto ejecutar
+if "%opcion%"=="1" goto ejecutar_script
+if "%opcion%"=="2" goto instalar_python
+if "%opcion%"=="3" goto instalar_py
 if "%opcion%"=="4" goto salir
 
 echo Opcion invalida. Elija Nuevamente.
@@ -30,9 +41,12 @@ echo.
 timeout /t 3 >nul
 python --version >nul 2>&1
 if %errorlevel%==0 (
-    echo Python ya se Encuentra instalado en tu sistema, Obmite este Paso!
+    echo Python ya se Encuentra instalado en tu sistema.
+    timeout /t 2 >nul
+    echo [!] Ejecutando Blur_KMS...
+    timeout /t 1 >nul
+    goto ejecutar_script
     pause
-    goto inicio
 )
 
 set "python_url=https://www.python.org/ftp/python/3.13.1/python-3.13.1-amd64.exe"
@@ -68,14 +82,20 @@ pause
 goto inicio
 
 :ejecutar_script
+cd /d "%~dp0"
 if exist "Blur.py" (
-    echo Ejecutando script.py...
+    echo Verificando si colorama está instalado...
+    python -c "import colorama" 2>nul
+    if %errorlevel% neq 0 (
+        echo Colorama no está instalado. Instalándolo ahora...
+        python -m pip install colorama
+    ) 
+    echo Ejecutando Blur.py...
     python Blur.py
 ) else (
-    echo No se encontró script.py
+    echo No se encontró Blur.py
 )
 pause
-exit
 
 :salir
 echo Saliendo del programa...
