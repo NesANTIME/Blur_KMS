@@ -38,7 +38,7 @@ Luego, Se debe Ejecutar como Administrador el archivo .bat llamado "Install-D" y
 
 # NOTA: Si al Ejecutar "Install-D.bat" y Elejir la opcion 1, Aparece el Siguiente Mensaje: 
 "Python ya se Encuentra instalado en tu sistema" 
-# La Herramienta Instalara La Libreria Colorama, Una Libreria de Python Meramente Estetica.
+# La Herramienta Instalara La Libreria Colorama, Una Libreria de Python Meramente Estetica. 
 ```
 
 ## Modo de Uso
