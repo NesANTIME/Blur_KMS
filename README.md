@@ -27,17 +27,18 @@ Esta Herramienta esta Diseñada en Python Por lo Cual es Nesesario Instalar El P
 Instrucciones paso a paso sobre cómo instalar y ejecutar Blur-KMS.
 ```bash
 # Descargar Programa:
-Descarga La Ultima Version Disponible/Estable - Si desea Probar Versiones Beta-Alfa descargue el ZIP. 
+Descarga La Ultima Version Disponible/Estable - Si desea Probar Versiones Beta-Alfa descargue desde la Fuente/Code. 
 
 # Entra al directorio del programa:
-Ingrese en la Carpeta "Blur-KMS"
+Descomprima el ZIP y Ingrese en la Carpeta "Blur-KMS"
 
 # Ejecuta el programa
-Al Descargar El Programa se Recomienda Ejecutar como Administrador el archivo .bat llamado "Install-D" y elegir la opcion de su preferencia.
+Luego, Se debe Ejecutar como Administrador el archivo .bat llamado "Install-D" y elegir la opcion de su preferencia.
+# NOTA: El Programa No se Ejecutara Si no le brinda permisos de administracion, Blur-KMS Tratara de Obtener Su Permiso.
 
-# NOTA: Si al Ejecutar "Install-D.bat" aparece el mensaje: 
-"Python ya se Encuentra instalado en tu sistema, Omite este Paso" 
-# Ya podria Ejecutar El Fichero .py llamado "Blur.py" //El Programa Principal. De lo contrario debera instalar Python Elijiendo su opcion de instalacion.
+# NOTA: Si al Ejecutar "Install-D.bat" y Elejir la opcion 1, Aparece el Siguiente Mensaje: 
+"Python ya se Encuentra instalado en tu sistema" 
+# La Herramienta Instalara La Libreria Colorama, Una Libreria de Python Meramente Estetica.
 ```
 
 ## Modo de Uso
