@@ -1,12 +1,12 @@
 @echo off
 setlocal enabledelayedexpansion
-title Blur_KMS v1.0 by NesAnTime
+title Blur_KMS v2.0 by NesAnTime
 
 net session >nul 2>&1
 if %errorLevel% neq 0 (
-    echo Es Nesesario Ejecutar Como Administrador...
+    echo        ! Es Nesesario Ejecutar Como Administrador...
     echo.
-    echo Solicitando Permiso! Acepte para Continuar...
+    echo    Solicitando Permiso! Acepte para Continuar...
     timeout /t 2 >nul
     powershell -Command "Start-Process cmd -ArgumentList '/c %~s0' -Verb RunAs"
     exit /b
@@ -15,7 +15,7 @@ if %errorLevel% neq 0 (
 :inicio
 cls
 echo =======================================
-echo       MENU DE OPCIONES (Blur_KMS)     
+echo       MENU DE OPCIONES (Blur_KMS Execute)     
 echo =======================================
 echo.
 echo [1] Ejecutar Blur_KMS
@@ -49,7 +49,7 @@ if %errorlevel%==0 (
     pause
 )
 
-set "python_url=https://www.python.org/ftp/python/3.13.1/python-3.13.1-amd64.exe"
+set "python_url=https://www.python.org/ftp/python/3.13.1/python-3.13.2-amd64.exe"
 set "installer=python_installer.exe"
 
 echo Descargando Python...
