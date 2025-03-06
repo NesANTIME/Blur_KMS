@@ -3,7 +3,7 @@ Activar Windows y Office ¡Nunca Ha Sido Tan Facil!<br></br>
 ![Version](https://img.shields.io/badge/version-2.0-blue)
 ![Desarrollador](https://img.shields.io/badge/NesAnTime-green)
 <br></br>
-Mas Informacion Sobre la Actualizacion: Mejora en Manejo Errores, Nueva Funcion, y Optimizacion.
+Mas Informacion Sobre la Actualizacion: Mejora en Manejo Errores, Nueva Funcion, y Optimizacion. (Fase De Prueba BETA-Version2.0)
 
 ## Descripción
 Blur-KMS es una herramienta de línea de comandos creada para facilitar la Instalacion de Claves KMS de Windows o/u Office.
