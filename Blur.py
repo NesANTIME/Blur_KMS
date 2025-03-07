@@ -4,6 +4,7 @@ import os
 import subprocess
 import time
 import winreg
+import urllib.request
 import json
 from colorama import Fore, init, Style
 init()
@@ -16,19 +17,69 @@ def Icon():
     print(" ██╔══██╗██║     ██║   ██║██╔══██╗    ╚════╝    ██╔═██╗ ██║╚██╔╝██║╚════██║")
     print(" ██████╔╝███████╗╚██████╔╝██║  ██║              ██║  ██╗██║ ╚═╝ ██║███████║")
     print(" ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝              ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝")
-    print(Fore.BLUE + "   Blur-KMS v2.0 By NesAnTime" + Fore.WHITE)
+    print(Fore.BLUE + "   Blur-KMS v2.3 By NesAnTime" + Fore.WHITE)
 
 def clear():
     os.system("cls")
 
-def Command_Prompt(CMD):
-    subprocess.run(CMD, shell=True)
+def Rut_OSPP():
+    rutas= [r"C:\Program Files\Microsoft Office\Office16\ospp.vbs", r"C:\Program Files (x86)\Microsoft Office\Office16\ospp.vbs"]
+    for ruta in rutas:
+        if os.path.exists(ruta):
+            return ruta
+    return None
+
+def Command(CMD, mode):
+    if mode == "Prompt":
+        subprocess.run(CMD, shell=True)
+    elif mode == "Shell":
+        subprocess.run(CMD, shell=True, capture_output=True, text=True)
+    else:
+        Ospp_rut = Rut_OSPP()
+        subprocess.run(f'cscript "{Ospp_rut}" {CMD}', shell=True, check=True)
 
 def refresh(dat):
     time.sleep(dat)
 
 def Bits_Windows():
     return "64 bits" if sys.maxsize > 2**32 else "32 bits"
+
+#Updater--------
+def Update():        
+    VerLocal = 'Scritps/Version.txt'
+    VerNew = "https://raw.githubusercontent.com/NesANTIME/SyS-Tool/main/Version.txt"
+    
+    def V_NewVer(VerNew):
+        try:
+            with urllib.request.urlopen(VerNew) as response:
+                contenido = response.read().decode('utf-8').strip()
+                return contenido
+        except Exception as e:
+            print(f"{Fore.RED}[!] No se pudo obtener el contenido remoto: {e}")
+            return None
+        
+    def V_LocalVer(VerLocal, V_NewUp):
+        try:
+            if not os.path.exists(VerLocal):
+                print(f"{Fore.RED}[!] El archivo local {VerLocal} no existe.")
+                return
+            
+            with open(VerLocal, 'r') as file:
+                contenido_local = file.read().strip()
+                if contenido_local == V_NewUp:
+                    return f"{Fore.WHITE + Style.BRIGHT}[!] No hay actualizaciones disponibles."
+                else:
+                    return f"{Fore.CYAN + Style.BRIGHT}[!] La Nueva Version de {V_NewUp} Esta disponible ¡Descargala YA!\n"
+        except Exception as e:
+            print(f"{Fore.RED}[!] Error al leer el archivo local {VerLocal}: {e}")
+
+    V_NewUp = V_NewVer(VerNew)
+    if V_NewUp is not None:
+        resultado = V_LocalVer(VerLocal, V_NewUp)
+        return resultado
+    else:
+        return Fore.RED + "[!] No se pudo obtener el contenido remoto para comparar."
+#---------------
 
 def SO_Windows():
     try:
@@ -64,6 +115,20 @@ def Office_Version():
     
     return None
 
+def Office_Ruta():
+    rut = [
+        r"%ProgramFiles(x86)%\Microsoft Office\Office16",
+        r"%ProgramFiles%\Microsoft Office\Office16"
+    ]
+
+    for path in rut:
+        if os.path.exists(os.path.expandvars(path)):
+            Command(CMD = f"cd /d {path}", mode = "Prompt")
+            break
+    else:
+        print(Fore.RED + "[!] No se encontró la ruta de instalación de Microsoft Office." + Fore.WHITE)
+        return
+
 def Search(dato):
     with open("Scritps/KMS_Codes_Windows.json", "r", encoding="utf-8") as file:
         kms_data = json.load(file)
@@ -79,16 +144,16 @@ def Internet_Conexion():
 
 def Funcion_ActivationSO(SO_Version, KMS_Code):
     print("\n[!] Iniciando Instalacion de Claves... ")
-    Command_Prompt(CMD = f"slmgr /ipk {KMS_Code}")
+    Command(CMD = f"slmgr /ipk {KMS_Code}", mode = "Prompt")
 
     refresh(4)
     print("\n[!] Configurando Administrador de Claves...")
-    Command_Prompt(CMD = "slmgr /skms kms.digiboy.ir")
+    Command(CMD = "slmgr /skms kms.digiboy.ir", mode = "Prompt")
     print(Style.DIM + " - Administrador de Claves: kms.digiboy.ir" + Style.NORMAL)
 
     refresh(4)
     print("\n[!] Activando Clave... ")
-    Command_Prompt(CMD = "slmgr /ato")
+    Command(CMD = "slmgr /ato", mode = "Prompt")
 
     refresh(4)
     print(Style.BRIGHT + "\n[!] Finalizando..." + Style.NORMAL)
@@ -98,43 +163,47 @@ def Funcion_ActivationSO(SO_Version, KMS_Code):
     input(Fore.RED + "\nPresione Enter Para Finalizar...")
 
 def Funcion_ActivationOffice(Office):
-    print("\n[!] Iniciando Instalacion de Claves KMS En Office... ")
-    Command_Prompt(CMD = f"cd /d %ProgramFiles(x86)%\Microsoft Office\Office16")
-    Command_Prompt(CMD = "cd /d %ProgramFiles%\Microsoft Office\Office16")
+    print(Fore.GREEN + "\n[!] Iniciando Instalacion de Claves KMS En Office... " + Fore.WHITE)
+    Office_Ruta()
 
     refresh(2)
-    print("\n[!] Convirtiendo Office a Licencia Volumen... ")
+    print(Fore.GREEN + "\n[!] Convirtiendo Office a Licencia Volumen... " + Fore.WHITE)
     if Office == "Microsoft Office 2016":
-        Command_Prompt(CMD = "for /f %x in ('dir /b ..\\root\\Licenses16\\proplusvl_kms*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\root\\Licenses16\\%x\"")
+        Command(r'for /f %x in (\'dir /b ..\root\Licenses16\proplusvl_kms*.xrm-ms\') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"', mode = "Shell")
     elif Office == "Microsoft Office 2019":
-        Command_Prompt(CMD = "for /f %x in ('dir /b ..\\root\\Licenses16\\ProPlus2019VL*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\root\\Licenses16\\%x\"")
+        Command(r'for /f %x in (\'dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms\') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"', mode = "Shell")
     elif Office == "Microsoft Office 2021":
-        Command_Prompt(CMD = "for /f %x in ('dir /b ..\\root\\Licenses16\\ProPlus2021VL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\root\\Licenses16\\%x\"")
+        Command(r'for /f %x in (\'dir /b ..\root\Licenses16\ProPlus2021VL_KMS*.xrm-ms\') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"', mode = "Shell")
     print(Style.DIM + " - Convertido Exitosamente..." + Style.NORMAL)
 
-    refresh(2)
-    print("\n[!] Activando Clave... ")
-    if Office == "Microsoft Office 2016":
-        Command_Prompt(CMD = "cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99")
-        Command_Prompt(CMD = "cscript ospp.vbs /unpkey:BTDRB >nul")
-        Command_Prompt(CMD = "cscript ospp.vbs /unpkey:KHGM9 >nul")
-        Command_Prompt(CMD = "cscript ospp.vbs /unpkey:CPQVG >nul")
-        Command_Prompt(CMD = "cscript ospp.vbs /sethst:e8.us.to")
-        Command_Prompt(CMD = "cscript ospp.vbs /setprt:1688")
-        Command_Prompt(CMD = "cscript ospp.vbs /act")
-    elif Office == "Microsoft Office 2019":
-        Command_Prompt(CMD = "cscript ospp.vbs /setprt:1688")
-        Command_Prompt(CMD = "cscript ospp.vbs /unpkey:6MWKP >nul")
-        Command_Prompt(CMD = "cscript ospp.vbs /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP")
-        Command_Prompt(CMD = "cscript ospp.vbs /sethst:e8.us.to")
-        Command_Prompt(CMD = "cscript ospp.vbs /act")
-    elif Office == "Microsoft Office 2021":
-        Command_Prompt(CMD = "cscript ospp.vbs /setprt:1688")
-        Command_Prompt(CMD = "cscript ospp.vbs /unpkey:6F7TH >nul")
-        Command_Prompt(CMD = "cscript ospp.vbs /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH")
-        Command_Prompt(CMD = "cscript ospp.vbs /sethst:e8.us.to")
-        Command_Prompt(CMD = "cscript ospp.vbs /act")
+    Ospp_rut = Rut_OSPP()
 
+    refresh(2)
+    print(Fore.GREEN + "\n[!] Activando Clave... " + Fore.WHITE)
+
+    if not Ospp_rut:
+        print(Fore.RED + "[ERROR] No se encontró ospp.vbs en las rutas esperadas." + Fore.WHITE)
+    else:
+        if Office == "Microsoft Office 2016":
+            Command(CMD=" /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99", mode="")
+            Command(CMD=" /unpkey:BTDRB >nul", mode="")
+            Command(CMD=" /unpkey:KHGM9 >nul", mode="")
+            Command(CMD=" /unpkey:CPQVG >nul", mode="")
+            Command(CMD=" /sethst:e8.us.to", mode="")
+            Command(CMD=" /setprt:1688", mode="")
+            Command(CMD=" /act", mode="")
+        elif Office == "Microsoft Office 2019":
+            Command(CMD=" /setprt:1688", mode="")
+            Command(CMD=" /unpkey:6MWKP >nul", mode="")
+            Command(CMD=" /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP", mode="")
+            Command(CMD=" /sethst:e8.us.to", mode="")
+            Command(CMD=" /act", mode="")
+        elif Office == "Microsoft Office 2021":
+            Command(CMD=" /setprt:1688", mode="")
+            Command(CMD=" /unpkey:6F7TH >nul", mode="")
+            Command(CMD=" /inpkey:FXYTK-NJJ8C-GB6DW-3DYQT-6F7TH", mode="")
+            Command(CMD=" /sethst:e8.us.to", mode="")
+            Command(CMD=" /act", mode="")
     refresh(2)
     print(Style.BRIGHT + "\n[!] Finalizando..." + Style.NORMAL)
     print(Fore.GREEN + Style.DIM + f"[!] Activacion Completada. Activado Con Exito.")
@@ -202,7 +271,7 @@ def Main_KMSWindows(SO_Version, SO_Bits):
 
             print(Fore.GREEN + "[!] Iniciando Programa de Activacion...")
 
-            KMS_Code = Search(dato = SO_Version, mode = True)
+            KMS_Code = Search(dato = SO_Version)
 
             if KMS_Code == "Clave no encontrada":
                 print(Fore.RED + "[!] Sistema Operativo Desconocido, Sin Clave KMS Valida.")
@@ -212,64 +281,67 @@ def Main_KMSWindows(SO_Version, SO_Bits):
                 break
 
 def Main_KMSOffice(Of_Exists):
-    while True:
+    def Execute(Of_Version):
+        clear()
         Icon()
-        print(Fore.YELLOW + Style.DIM + "\n [¡] Buscando Microsoft Office en el registro de Windows...\n" + Style.NORMAL)
-        refresh(2)
+        print(Fore.YELLOW + Style.DIM + "\n [!] Información Obtenida del Sistema:" + Style.NORMAL)
+        print(f"      {Style.BRIGHT + Fore.GREEN}[!]  {Of_Version + Style.NORMAL} \n")
 
-        if Of_Exists == None:
-            print(f"      {Style.BRIGHT + Fore.RED}- [!] Microsoft Office no está instalado en este sistema. {Style.NORMAL}")
-        else: 
-            print(f"{Style.BRIGHT + Fore.GREEN}  [!] Microsoft Office Detectado \n")
-            print(Fore.CYAN + "***    Menu de Versiones de Office   ***\n" + Fore.WHITE)
-            print(f"{Style.DIM}     [1]{Style.NORMAL} Microsoft Office 2016")
-            print(f"{Style.DIM}     [2]{Style.NORMAL} Microsoft Office 2019")
-            print(f"{Style.DIM}     [3]{Style.NORMAL} Microsoft Office 2021")
-            print(f"{Style.DIM}     [4]{Style.NORMAL} Claves Genericas Para Office\n")
+        print(Fore.GREEN + "[!] Iniciando Programa de Activacion KMS...\n")
+        print(Fore.YELLOW + Style.DIM +  "[!] NOTA: La Herramienta de Claves KMS para Office tiene un 50% de posibilidades de \nresultar exitosa. Si tiene Un resultado Desfaborable Se Pueden le Proporcionar \nClaves Genericas Para Office." + Fore.WHITE + Style.NORMAL + " \n \n Presione Enter para Continuar...")
+        input()
 
+        while True:
+            if Internet_Conexion() == True:
+                print(Fore.GREEN + " ----- [!] Conectado a Internet." + Fore.WHITE)
+                break
+            else:
+                print(Fore.RED + " ----- [!] No se ha detectado conexión a Internet." + Fore.WHITE)
+                print("   - Intentelo Nuevamente Conectado a Internet, Se Intentara Conectar Automaticamente.")
+                refresh(2)
+            
+        Funcion_ActivationOffice(Of_Version)
+
+
+    
+    Icon()
+    print(Fore.YELLOW + Style.DIM + "\n [¡] Buscando Microsoft Office en el registro de Windows...\n" + Style.NORMAL)
+    refresh(2)
+
+    if Of_Exists == None:
+        print(f"      {Style.BRIGHT + Fore.RED}- [!] Microsoft Office no está instalado en este sistema. {Style.NORMAL}")
+    else: 
+        print(f"{Style.BRIGHT + Fore.GREEN}  [!] Microsoft Office Detectado \n")
+        print(Fore.CYAN + "***    Menu de Versiones de Office   ***\n" + Fore.WHITE)
+        print(f"{Style.DIM}     [1]{Style.NORMAL} Microsoft Office 2016")
+        print(f"{Style.DIM}     [2]{Style.NORMAL} Microsoft Office 2019")
+        print(f"{Style.DIM}     [3]{Style.NORMAL} Microsoft Office 2021")
+        print(f"{Style.DIM}     [4]{Style.NORMAL} Claves Genericas Para Office\n")
+
+        while True:
             try:
                 opc = int(input(Fore.YELLOW + Style.DIM + f"[¡] Elija la Opcion Requerida: "+ Style.NORMAL + Fore.WHITE))
                 if (opc == 1):
-                    Of_Version = "Microsoft Office 2016"
+                    Execute(Of_Version = "Microsoft Office 2016")
+                    break
                 elif (opc == 2):
-                    Of_Version = "Microsoft Office 2019"
+                    Execute(Of_Version = "Microsoft Office 2019")
+                    break
                 elif (opc == 3):
-                    Of_Version = "Microsoft Office 2021"
+                    Execute(Of_Version = "Microsoft Office 2021")
+                    break
                 elif (opc == 4):
                     print(Fore.CYAN + "[!] Abriendo en el Navegador")
                     refresh(2)
                     os.system("start Scritps/Codes_Office.html")
                     break 
                 else:
-                    print(Fore.RED + "[!] Opcion Invalida.")
+                    print(Fore.RED + "[!] Opcion Invalida.\n")
                     refresh(2)
             except ValueError:
-                print(Fore.RED + "[!] Entrada no válida. Debe ser un número.")
+                print(Fore.RED + "[!] Entrada no válida. Debe ser un número.\n")
                 refresh(2)
                 
-            
-            clear()
-            Icon()
-            print(Fore.YELLOW + Style.DIM + "\n [!] Información Obtenida del Sistema:" + Style.NORMAL)
-            print(f"      {Style.BRIGHT + Fore.GREEN}[!]  {Of_Version + Style.NORMAL} \n")
-
-            print(Fore.GREEN + "[!] Iniciando Programa de Activacion KMS...\n")
-            print(Fore.YELLOW + Style.DIM +  "[!] NOTA: La Herramienta de Claves KMS para Office tiene un 50% de posibilidades de \nresultar exitosa. Si tiene Un resultado Desfaborable Se Pueden le Proporcionar \nClaves Genericas Para Office." + Fore.WHITE + Style.NORMAL + " \n \n Presione Enter para Continuar...")
-            input()
-
-            while True:
-                if Internet_Conexion() == True:
-                    print(Fore.GREEN + "[!] Conectado a Internet." + Fore.WHITE)
-                    break
-                else:
-                    print(Fore.RED + "[!] No se ha detectado conexión a Internet." + Fore.WHITE)
-                    print("Intentelo Nuevamente Conectado a Internet, Se Intentara Conectar Automaticamente.")
-                    refresh(2)
-            
-            Funcion_ActivationOffice(Of_Version)
-            break
-
-
 
 
 def Main():
@@ -279,7 +351,8 @@ def Main():
     print(f"{Style.BRIGHT}\n- - - Menu De Opciones - - - {Style.NORMAL}")
     print(f"   {Fore.GREEN + Style.DIM}[1] {Fore.WHITE + Style.NORMAL}Activar Windows")
     print(f"   {Fore.GREEN + Style.DIM}[2] {Fore.WHITE + Style.NORMAL}Activar Office")
-    print(f"   {Fore.GREEN + Style.DIM}[3] {Fore.WHITE + Style.NORMAL}Salir")
+    print(f"   {Fore.GREEN + Style.DIM}[3] {Fore.WHITE + Style.NORMAL}Buscar Actualizaciones")
+    print(f"   {Fore.GREEN + Style.DIM}[4] {Fore.WHITE + Style.NORMAL}Salir")
 
     while True:
         opc = input(Style.BRIGHT + "\n - Ingrese Su Opcion: " + Style.NORMAL)
@@ -287,24 +360,36 @@ def Main():
         if (opc == "1"):
             SO_Version = SO_Windows()
             SO_Bits = Bits_Windows()
+            refresh(1)
             clear()
             Main_KMSWindows(SO_Version, SO_Bits)
             break
 
         elif (opc == "2"):
             Of_Exists = Office_Version()
+            refresh(1)
             clear()
             Main_KMSOffice(Of_Exists)
             break
 
         elif (opc == "3"):
+            resultado = Update()
+            if resultado:
+                refresh(1)
+                clear()
+                Icon()
+                print("\n" + resultado)
+            input(Fore.WHITE + Style.NORMAL + "\n[!] Presione Enter Para Continuar...")
+            Main()
+
+        elif (opc == "4"):
             clear()
             print(Fore.YELLOW + Style.DIM + "[!] Cerrando...")
             refresh(1)
             break
         
         else:
-            opc = input(Fore.RED + "[!] Error. Opcion Invalida.")
+            opc = print(Fore.RED + "[!] Error. Opcion Invalida." + Fore.WHITE)
         
 
 Main()

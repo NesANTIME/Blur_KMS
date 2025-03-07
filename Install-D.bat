@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-title Blur_KMS v2.0 by NesAnTime
+title Blur_KMS v2.3 by NesAnTime
 
 net session >nul 2>&1
 if %errorLevel% neq 0 (
