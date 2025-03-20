@@ -47,7 +47,7 @@ def Bits_Windows():
 #Updater--------
 def Update():        
     VerLocal = 'Scritps/Version.txt'
-    VerNew = "https://raw.githubusercontent.com/NesANTIME/SyS-Tool/main/Version.txt"
+    VerNew = "https://raw.githubusercontent.com/NesANTIME/Blur_KMS/refs/heads/main/Scritps/Version.txt"
     
     def V_NewVer(VerNew):
         try:
