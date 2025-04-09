@@ -1,16 +1,15 @@
 # Blur-KMS
 Activar Windows y Office ¡Nunca Ha Sido Tan Facil!<br></br>
-![Version](https://img.shields.io/badge/Version-2.3-blue)
+![Version](https://img.shields.io/badge/Version-3.0-blue)
 ![Desarrollador](https://img.shields.io/badge/NesAnTime-green)
 <br>
 #### Mas Informacion Sobre la Actualizacion: 
 ```bash
-# (Fase De Prueba BETA-Version2.0) --- FINALIZADA
- - "NOVEDADES:" Mejora en Manejo Errores, Nueva Funcion de Activacion KMS (Office), y Optimizacion.
-
-
-# Version 2.3 Oficial --- PUBLICADA/TERMINADA
+# Version 2.3 Oficial --- FINALIZADA
  - "NOVEDADES:" Mejoras en el Manejo de Errores Comunes, Solucion de Errores, Solucion de Aplicacion de Comandos en CMD (Office), Mas Abreviaciones de Comando en CMD, Solucion de Errores Tipicos en Consola, Notificador de Actualizaciones disponibles, y Optimizacion.
+
+# Version 3.0 Oficial/Beta --- FINALIZADA
+ - "NOVEDADES:" Mejoras en el apartado visual, mejoras en errores visuales, manejo de errores, animaciones.
 ```
 
 ## Descripción
@@ -18,11 +17,11 @@ Blur-KMS es una herramienta de línea de comandos diseñada para facilitar la In
 
 Tenga en cuenta que el uso de claves KMS no oficiales para activar productos de Microsoft es una violación de sus términos de servicio y puede ser ilegal en muchas regiones, Por esta Razon Blur-KMS ultiliza claves KMS proporcionadas por Microsoft, el enlace se encuentra a Continuacion: https://learn.microsoft.com/es-es/windows-server/get-started/kms-client-activation-keys?tabs=server2025%2Cwindows1110ltsc%2Cversion1803%2Cwindows81
 
-Esta Herramienta esta Diseñada en Python Por lo cual es nesesario instalar el programa Python (https://www.python.org/downloads/) en el sistema . Pensando en esa Nesecidad el usuario puede decidir si instalar python manualmente o dejandolo en manos de Blur-KMS.  (Por Defecto Se Instalara La Version 3.13.2 de Python).
+Esta Herramienta esta Diseñada en Python Por lo cual es nesesario instalar el programa Python (https://www.python.org/downloads/) en el sistema.
 
 ## Características de Blur-KMS
 
-- Instalacion de Python (Manual o Automatico).
+- Instalacion de Python (Manual).
 - Instalacion de Claves KMS (Windows o/u Office)
 - Interfaz de linea de Comandos intuitiva.
   

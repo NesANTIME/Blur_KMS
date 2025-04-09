@@ -6,18 +6,20 @@ import time
 import winreg
 import urllib.request
 import json
+import tkinter as tk
+from PIL import Image, ImageTk
 from colorama import Fore, init, Style
 init()
 
 def Icon():
-    print(" ")
-    print(Fore.CYAN + " ██████╗ ██╗     ██╗   ██╗██████╗               ██╗  ██╗███╗   ███╗███████╗")
-    print(" ██╔══██╗██║     ██║   ██║██╔══██╗              ██║ ██╔╝████╗ ████║██╔════╝")
-    print(" ██████╔╝██║     ██║   ██║██████╔╝    █████╗    █████╔╝ ██╔████╔██║███████╗")
-    print(" ██╔══██╗██║     ██║   ██║██╔══██╗    ╚════╝    ██╔═██╗ ██║╚██╔╝██║╚════██║")
-    print(" ██████╔╝███████╗╚██████╔╝██║  ██║              ██║  ██╗██║ ╚═╝ ██║███████║")
-    print(" ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝              ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝")
-    print(Fore.BLUE + "   Blur-KMS v2.3 By NesAnTime" + Fore.WHITE)
+    print(" \n")
+    print(Fore.CYAN + "    ██████╗ ██╗     ██╗   ██╗██████╗               ██╗  ██╗███╗   ███╗███████╗")
+    print("    ██╔══██╗██║     ██║   ██║██╔══██╗              ██║ ██╔╝████╗ ████║██╔════╝")
+    print("    ██████╔╝██║     ██║   ██║██████╔╝    █████╗    █████╔╝ ██╔████╔██║███████╗")
+    print("    ██╔══██╗██║     ██║   ██║██╔══██╗    ╚════╝    ██╔═██╗ ██║╚██╔╝██║╚════██║")
+    print("    ██████╔╝███████╗╚██████╔╝██║  ██║              ██║  ██╗██║ ╚═╝ ██║███████║")
+    print("    ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝              ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝")
+    print(Fore.BLUE + f"      {Fore.CYAN + Style.DIM}Blur-KMS v3.0{Fore.BLUE + Style.NORMAL} By NesAnTime" + Fore.WHITE)
 
 def clear():
     os.system("cls")
@@ -234,7 +236,12 @@ def SO_Edit():
     except Exception as e:
         print(Fore.RED + "[!] Error. Entrada no válida.")
         refresh(2)
-
+    except ValueError:
+        print(Fore.RED + "[!] Error. Entrada no válida.")
+        refresh(2)
+    except TypeError:
+        print(Fore.RED + "[!] Error. Entrada no válida.")
+        refresh(2)
 
 def Main_KMSWindows(SO_Version, SO_Bits):
     while True:
@@ -242,16 +249,22 @@ def Main_KMSWindows(SO_Version, SO_Bits):
         print(Fore.YELLOW + Style.DIM + "\n [!] Información Obtenida del Sistema:" + Style.NORMAL)
         print(f"      {Style.BRIGHT + Fore.CYAN}- Sistema Operativo: {Style.NORMAL + SO_Version}")
         print(f"      {Style.BRIGHT + Fore.CYAN}- Arquitectura: {Style.NORMAL + SO_Bits} \n")
-        opc = input(Fore.YELLOW + Style.DIM + f"[!] Si Considera un Error La Version Del Windows, Escriba (Windows) para corregir." + Fore.YELLOW + Style.DIM + f"\n[!] Si Considera un Error En la Arquitectura, Escriba (Bits) para corregir. \nDe lo contrario Presione la Tecla (Enter)...\n \n {Fore.GREEN}  [¡] Esperando: " + Style.NORMAL + Fore.WHITE)
+        print(Fore.YELLOW + Style.DIM + f"     [!] Si Considera un Error La Version Obtenida De Windows, O la Arquitectura. Elija una opcion a Continuacion." + Style.NORMAL + Fore.WHITE)
+        print(f"{Style.DIM}          [1]{Style.NORMAL} Cambiar Version de Windows")
+        print(f"{Style.DIM}          [2]{Style.NORMAL} Cambiar Arquitectura de Windows")
+        print(f"{Style.DIM}          [3]{Style.NORMAL} Continuar Con Activacion de Windows")
 
-        if (opc == "windows") or (opc == "Windows") or (opc == "WINDOWS"):
+        opc = input(f"\n{Fore.GREEN}     [¡] Esperando Opcion: " + Style.NORMAL + Fore.WHITE)
+
+        if (opc == "1") or (opc == "Windows") or (opc == "WINDOWS"):
             SO_Version = SO_Edit()
             clear()
 
-        elif (opc == "bits") or (opc == "Bits") or (opc == "BITS"):
+        elif (opc == "2") or (opc == "Bits") or (opc == "BITS"):
             print(Fore.GREEN +"\n[!] Su Sistema Operativo: "+ Style.DIM + SO_Version + Style.NORMAL + " Es de " + Style.DIM + Fore.WHITE + "[1] " + Style.NORMAL + "32 bits  -  " + Style.DIM + "[2] " + Style.NORMAL + "64 bits")
             try:
                 Mip = int(input(f"  [!] Ingrese Su Opcion: {Style.DIM}"))
+                print(Style.RESET_ALL)
                 while (Mip < 1) or (Mip > 2):
                     print("Opcion Ingresada Invalida.")
                     Mip = int(input(f"  [!] Ingrese Nuevamente Su Opcion: {Style.DIM}"))
@@ -262,7 +275,9 @@ def Main_KMSWindows(SO_Version, SO_Bits):
             except ValueError:
                 print(Fore.RED + "[!] Error. Entrada no válida.")
                 refresh(2)
-        else:
+            clear()
+
+        elif (opc == "3") or (opc == "continuar") or (opc == "Continuar"):
             clear()
             Icon()
             print(Fore.YELLOW + Style.DIM + "\n [!] Información Obtenida del Sistema:" + Style.NORMAL)
@@ -279,6 +294,11 @@ def Main_KMSWindows(SO_Version, SO_Bits):
                 refresh(2)
                 Funcion_ActivationSO(SO_Version, KMS_Code)
                 break
+
+        else:
+            print(Fore.RED + "[!] Opcion Invalida.")
+            refresh(2)
+
 
 def Main_KMSOffice(Of_Exists):
     def Execute(Of_Version):
@@ -341,35 +361,30 @@ def Main_KMSOffice(Of_Exists):
             except ValueError:
                 print(Fore.RED + "[!] Entrada no válida. Debe ser un número.\n")
                 refresh(2)
-                
-
 
 def Main():
     clear()
 
     Icon()
-    print(f"{Style.BRIGHT}\n- - - Menu De Opciones - - - {Style.NORMAL}")
-    print(f"   {Fore.GREEN + Style.DIM}[1] {Fore.WHITE + Style.NORMAL}Activar Windows")
-    print(f"   {Fore.GREEN + Style.DIM}[2] {Fore.WHITE + Style.NORMAL}Activar Office")
-    print(f"   {Fore.GREEN + Style.DIM}[3] {Fore.WHITE + Style.NORMAL}Buscar Actualizaciones")
-    print(f"   {Fore.GREEN + Style.DIM}[4] {Fore.WHITE + Style.NORMAL}Salir")
+    print(f"{Style.BRIGHT}\n  - - - Menu De Opciones - - - {Style.NORMAL}")
+    print(f"    {Fore.GREEN + Style.DIM}[1] {Fore.WHITE + Style.NORMAL}Activar Windows")
+    print(f"    {Fore.GREEN + Style.DIM}[2] {Fore.WHITE + Style.NORMAL}Activar Office")
+    print(f"    {Fore.GREEN + Style.DIM}[3] {Fore.WHITE + Style.NORMAL}Buscar Actualizaciones")
+    print(f"    {Fore.GREEN + Style.DIM}[4] {Fore.WHITE + Style.NORMAL}Salir")
 
     while True:
-        opc = input(Style.BRIGHT + "\n - Ingrese Su Opcion: " + Style.NORMAL)
+        opc = input(Style.BRIGHT + "\n  - Ingrese Su Opcion: " + Style.NORMAL)
 
         if (opc == "1"):
-            SO_Version = SO_Windows()
-            SO_Bits = Bits_Windows()
             refresh(1)
             clear()
-            Main_KMSWindows(SO_Version, SO_Bits)
+            Main_KMSWindows(SO_Version = SO_Windows(), SO_Bits = Bits_Windows())
             break
 
         elif (opc == "2"):
-            Of_Exists = Office_Version()
             refresh(1)
             clear()
-            Main_KMSOffice(Of_Exists)
+            Main_KMSOffice(Of_Exists = Office_Version())
             break
 
         elif (opc == "3"):
@@ -392,4 +407,62 @@ def Main():
             opc = print(Fore.RED + "[!] Error. Opcion Invalida." + Fore.WHITE)
         
 
-Main()
+class SplashScreen(tk.Tk):
+    def __init__(self):
+        super().__init__()
+
+        self.overrideredirect(True)
+        self.attributes("-topmost", True)
+        self.config(bg='black')
+        self.wm_attributes('-transparentcolor', 'black')
+        self.attributes('-alpha', 0.0)
+
+        image = Image.open("Scritps/Banner_Lanzador.png").convert("RGBA")
+        image = image.resize((600, 300), Image.Resampling.LANCZOS)
+        self.logo = ImageTk.PhotoImage(image)
+
+        width, height = image.size
+        total_height = height + 30 
+
+        x = (self.winfo_screenwidth() - width) // 2
+        y = (self.winfo_screenheight() - total_height) // 2
+        self.geometry(f"{width}x{total_height}+{x}+{y}")
+        self.label = tk.Label(self, image=self.logo, bg='black', bd=0)
+        self.label.pack()
+
+        self.progress = tk.Canvas(self, width=width, height=10, bg='black', highlightthickness=0)
+        self.progress.pack()
+        self.bar = self.progress.create_rectangle(0, 0, 0, 10, fill='#d9faf7')  
+
+        self.after(0, self.fade_in)
+
+    def fade_in(self):
+        for i in range(0, 21):
+            alpha = i / 20
+            self.attributes("-alpha", alpha)
+            self.update()
+            time.sleep(0.05)
+        self.animate_bar()
+
+    def animate_bar(self):
+        width = self.progress.winfo_width()
+        for i in range(0, width + 1, 10):
+            self.progress.coords(self.bar, 0, 0, i, 10)
+            self.update()
+            time.sleep(0.01)
+        self.after(500, self.fade_out)
+
+    def fade_out(self):
+        for i in range(20, -1, -1):
+            alpha = i / 20
+            self.attributes("-alpha", alpha)
+            self.update()
+            time.sleep(0.05)
+        self.destroy()
+        Main()
+
+
+if __name__ == "__main__":
+    app = SplashScreen()
+    app.mainloop()
+    Main()
