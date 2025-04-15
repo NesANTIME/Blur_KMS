@@ -5,10 +5,10 @@ Activar Windows y Office ¡Nunca Ha Sido Tan Facil!<br></br>
 <br>
 #### Mas Informacion Sobre la Actualizacion: 
 ```bash
-# Version 2.3 Oficial --- FINALIZADA
+# Version 2.3 Oficial --- FINALIZADA/PUBLICADA
  - "NOVEDADES:" Mejoras en el Manejo de Errores Comunes, Solucion de Errores, Solucion de Aplicacion de Comandos en CMD (Office), Mas Abreviaciones de Comando en CMD, Solucion de Errores Tipicos en Consola, Notificador de Actualizaciones disponibles, y Optimizacion.
 
-# Version 3.0 Oficial/Beta --- FINALIZADA
+# Version 3.0 Beta --- FINALIZADA
  - "NOVEDADES:" Mejoras en el apartado visual, mejoras en errores visuales, manejo de errores, animaciones.
 ```
 
