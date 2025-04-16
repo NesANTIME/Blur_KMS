@@ -12,6 +12,7 @@ from colorama import Fore, init, Style
 init()
 
 def Icon():
+    clear()
     print(" \n")
     print(Fore.CYAN + "    ██████╗ ██╗     ██╗   ██╗██████╗               ██╗  ██╗███╗   ███╗███████╗")
     print("    ██╔══██╗██║     ██║   ██║██╔══██╗              ██║ ██╔╝████╗ ████║██╔════╝")
@@ -19,7 +20,7 @@ def Icon():
     print("    ██╔══██╗██║     ██║   ██║██╔══██╗    ╚════╝    ██╔═██╗ ██║╚██╔╝██║╚════██║")
     print("    ██████╔╝███████╗╚██████╔╝██║  ██║              ██║  ██╗██║ ╚═╝ ██║███████║")
     print("    ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝              ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝")
-    print(Fore.BLUE + f"      {Fore.CYAN + Style.DIM}Blur-KMS v3.0{Fore.BLUE + Style.NORMAL} By NesAnTime" + Fore.WHITE)
+    print(Fore.BLUE + f"      {Fore.CYAN + Style.DIM}Blur-KMS v3.3{Fore.BLUE + Style.NORMAL} By NesAnTime" + Fore.WHITE)
 
 def clear():
     os.system("cls")
@@ -118,10 +119,7 @@ def Office_Version():
     return None
 
 def Office_Ruta():
-    rut = [
-        r"%ProgramFiles(x86)%\Microsoft Office\Office16",
-        r"%ProgramFiles%\Microsoft Office\Office16"
-    ]
+    rut = [r"%ProgramFiles(x86)%\Microsoft Office\Office16", r"%ProgramFiles%\Microsoft Office\Office16"]
 
     for path in rut:
         if os.path.exists(os.path.expandvars(path)):
@@ -148,19 +146,19 @@ def Funcion_ActivationSO(SO_Version, KMS_Code):
     print("\n[!] Iniciando Instalacion de Claves... ")
     Command(CMD = f"slmgr /ipk {KMS_Code}", mode = "Prompt")
 
-    refresh(4)
+    refresh(2)
     print("\n[!] Configurando Administrador de Claves...")
     Command(CMD = "slmgr /skms kms.digiboy.ir", mode = "Prompt")
-    print(Style.DIM + " - Administrador de Claves: kms.digiboy.ir" + Style.NORMAL)
+    print(Style.DIM + "     [ Administrador de Claves: kms.digiboy.ir ]" + Style.NORMAL)
 
-    refresh(4)
+    refresh(3)
     print("\n[!] Activando Clave... ")
     Command(CMD = "slmgr /ato", mode = "Prompt")
 
-    refresh(4)
+    refresh(2)
     print(Style.BRIGHT + "\n[!] Finalizando..." + Style.NORMAL)
-    print(Fore.GREEN + Style.DIM + f"[!] Activacion Completada. {SO_Version} Activado Con Exito.")
-    print(Fore.GREEN + f"\n[!] Es Nesesario Reiniciar, Para Completar. (Puede Reiniciar Mas Tarde)" + Style.NORMAL)
+    print(Fore.GREEN + Style.DIM + f"       [!] Activacion Completada. {SO_Version} Activado Con Exito.")
+    print(Fore.GREEN + f"           Es Nesesario Reiniciar, Para Completar. (Puede Reiniciar Mas Tarde)" + Style.NORMAL)
     refresh(1)
     input(Fore.RED + "\nPresione Enter Para Finalizar...")
 
@@ -169,19 +167,21 @@ def Funcion_ActivationOffice(Office):
     Office_Ruta()
 
     refresh(2)
-    print(Fore.GREEN + "\n[!] Convirtiendo Office a Licencia Volumen... " + Fore.WHITE)
+    print(Fore.GREEN + "\n[!] Convirtiendo Office a Licencia Volumen... ")
     if Office == "Microsoft Office 2016":
         Command(r'for /f %x in (\'dir /b ..\root\Licenses16\proplusvl_kms*.xrm-ms\') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"', mode = "Shell")
     elif Office == "Microsoft Office 2019":
         Command(r'for /f %x in (\'dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms\') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"', mode = "Shell")
     elif Office == "Microsoft Office 2021":
         Command(r'for /f %x in (\'dir /b ..\root\Licenses16\ProPlus2021VL_KMS*.xrm-ms\') do cscript ospp.vbs /inslic:"..\root\Licenses16\%x"', mode = "Shell")
-    print(Style.DIM + " - Convertido Exitosamente..." + Style.NORMAL)
+    print(Style.DIM + "  | Accion Ejecutada Exitosamente..." + Style.NORMAL)
 
     Ospp_rut = Rut_OSPP()
 
     refresh(2)
     print(Fore.GREEN + "\n[!] Activando Clave... " + Fore.WHITE)
+
+    print("\n [!!] Habilitando Registros \n " + Style.DIM)
 
     if not Ospp_rut:
         print(Fore.RED + "[ERROR] No se encontró ospp.vbs en las rutas esperadas." + Fore.WHITE)
@@ -307,19 +307,19 @@ def Main_KMSOffice(Of_Exists):
         print(Fore.YELLOW + Style.DIM + "\n [!] Información Obtenida del Sistema:" + Style.NORMAL)
         print(f"      {Style.BRIGHT + Fore.GREEN}[!]  {Of_Version + Style.NORMAL} \n")
 
-        print(Fore.GREEN + "[!] Iniciando Programa de Activacion KMS...\n")
-        print(Fore.YELLOW + Style.DIM +  "[!] NOTA: La Herramienta de Claves KMS para Office tiene un 50% de posibilidades de \nresultar exitosa. Si tiene Un resultado Desfaborable Se Pueden le Proporcionar \nClaves Genericas Para Office." + Fore.WHITE + Style.NORMAL + " \n \n Presione Enter para Continuar...")
-        input()
-
+        input(Fore.YELLOW + f"{Style.BRIGHT}[!] NOTA: {Style.DIM}La herramienta de claves KMS para Office tiene un 50% de probabilidades de \nresultar exitosa. Si obtiene un resultado desfaborable se pueden le proporcionar \nEl listado de claves genericas para Office." + Fore.WHITE + Style.NORMAL + " \n \n | Presione Enter para Continuar...")
+        
+        Icon()
+        print(Fore.GREEN + "\n [!] Iniciando Programa de Activacion KMS...")
         while True:
             if Internet_Conexion() == True:
-                print(Fore.GREEN + " ----- [!] Conectado a Internet." + Fore.WHITE)
+                print(Fore.GREEN + Style.DIM + "\n   ----- [!] Conectado a Internet." + Fore.WHITE + Style.NORMAL)
                 break
             else:
-                print(Fore.RED + " ----- [!] No se ha detectado conexión a Internet." + Fore.WHITE)
+                print(Fore.RED + Style.DIM + "\n    ----- [!] No se ha detectado conexión a Internet." + Fore.WHITE)
                 print("   - Intentelo Nuevamente Conectado a Internet, Se Intentara Conectar Automaticamente.")
                 refresh(2)
-            
+
         Funcion_ActivationOffice(Of_Version)
 
 
@@ -332,11 +332,11 @@ def Main_KMSOffice(Of_Exists):
         print(f"      {Style.BRIGHT + Fore.RED}- [!] Microsoft Office no está instalado en este sistema. {Style.NORMAL}")
     else: 
         print(f"{Style.BRIGHT + Fore.GREEN}  [!] Microsoft Office Detectado \n")
-        print(Fore.CYAN + "***    Menu de Versiones de Office   ***\n" + Fore.WHITE)
+        print(Fore.CYAN + "***    Menu de Versiones de Office   ***" + Fore.WHITE)
         print(f"{Style.DIM}     [1]{Style.NORMAL} Microsoft Office 2016")
         print(f"{Style.DIM}     [2]{Style.NORMAL} Microsoft Office 2019")
         print(f"{Style.DIM}     [3]{Style.NORMAL} Microsoft Office 2021")
-        print(f"{Style.DIM}     [4]{Style.NORMAL} Claves Genericas Para Office\n")
+        print(f"{Style.DIM}     [4]{Style.NORMAL} Claves Genericas Para Office {Style.DIM}(Claves Manuales){Style.NORMAL}\n")
 
         while True:
             try:
@@ -351,7 +351,7 @@ def Main_KMSOffice(Of_Exists):
                     Execute(Of_Version = "Microsoft Office 2021")
                     break
                 elif (opc == 4):
-                    print(Fore.CYAN + "[!] Abriendo en el Navegador")
+                    print(Fore.CYAN + "\n    [!] Abriendo en el Navegador, Listado de Claves Genericas Para Office...")
                     refresh(2)
                     os.system("start Scritps/Codes_Office.html")
                     break 
@@ -410,6 +410,7 @@ def Main():
 class SplashScreen(tk.Tk):
     def __init__(self):
         super().__init__()
+        
 
         self.overrideredirect(True)
         self.attributes("-topmost", True)
@@ -420,6 +421,7 @@ class SplashScreen(tk.Tk):
         image = Image.open("Scritps/Banner_Lanzador.png").convert("RGBA")
         image = image.resize((600, 300), Image.Resampling.LANCZOS)
         self.logo = ImageTk.PhotoImage(image)
+        
 
         width, height = image.size
         total_height = height + 30 
@@ -465,4 +467,3 @@ class SplashScreen(tk.Tk):
 if __name__ == "__main__":
     app = SplashScreen()
     app.mainloop()
-    Main()
