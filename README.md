@@ -1,5 +1,6 @@
 # Blur-KMS
 Activar Windows y Office ¡Nunca Ha Sido Tan Facil!<br></br>
+![Diagramita](Scritps/Banner_Lanzador.png)
 ![Version](https://img.shields.io/badge/Version_Actual-3.3-blue)
 ![Desarrollador](https://img.shields.io/badge/NesAnTime-green)
 <br>
