@@ -1,16 +1,16 @@
 @echo off
 setlocal enabledelayedexpansion
-title Lanzador Blur_KMS v3.3 by NesAnTimes
+title Blur_KMS v3.4 Launcher by NesAnTimes
 
 net session >nul 2>&1
-if %errorLevel% neq 0 (
+if %errorlevel% neq 0 (
     echo.
-    echo                     Lanzador Blur_KMS v3.3
+    echo                     Lanzador Blur_KMS v3.4
     echo.
     echo             Solicitando Permiso de Administrador
     echo                   Acepte para Continuar...
     timeout /t 3 >nul
-    powershell -Command "Start-Process cmd -ArgumentList '/c %~s0' -Verb RunAs"
+    powershell -Command "Start-Process cmd -ArgumentList '/c \"%~f0\"' -Verb RunAs"
     exit /b
 )
 
@@ -19,70 +19,92 @@ cls
 echo.
 echo.
 echo =====================================================================================================
-echo                                 MENU DE OPCIONES (Blur_KMS Lanzador v3.3)     
+echo                                 MENU DE OPCIONES (Blur_KMS Lanzador v3.4)     
 echo =====================================================================================================
 echo.
 echo       [1] Ejecutar Blur_KMS
 echo       [2] Instalador Python (Automatico)
-echo       [3] Salir
+echo       [3] Instalar Librerias (Automatico)
+echo       [4] Salir
 echo.
 echo -----------------------------------------------------------------------------------------------------
 echo.
-set /p opcion= -    -- Seleccione una opcion: 
+set /p opcion= -    -- Seleccione una opcion:  
 
 if "%opcion%"=="1" goto ejecutar_blurkms
-if "%opcion%"=="2" goto asistencia_py
-if "%opcion%"=="3" goto salir
+if "%opcion%"=="2" goto instalar_python
+if "%opcion%"=="3" goto instalar_librerias
+if "%opcion%"=="4" goto salir
 
 echo.
-echo Opcion invalida. Elija Nuevamente.
+echo Opción inválida. Intenta de nuevo.
 pause
 goto Main
 
-:asistencia_py
+:instalar_python
+echo.
+echo.
+echo      [#] Verificando si Python esta instalado...
 echo.
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo Python no se encuentra instalado. Iniciando Instalacion...
+    echo      [##] Python no esta instalado. Descargando e instalando...
     powershell -Command "Invoke-WebRequest -Uri https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe -OutFile python-installer.exe"
-    start /wait python-installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
-    del python-installer.exe
+    if exist python-installer.exe (
+        start /wait python-installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
+        del python-installer.exe
+        echo      [+] Python instalado correctamente.
+    ) else (
+        echo      [X] Error al descargar el instalador de Python.
+    )
 ) else (
-    echo.
-    echo Python ya se encuentra instalado.
+    echo      [+] Python ya esta instalado.
 )
+echo.
 pause
 goto Main
 
-:instalador_librerias
-pip install -r requirements.txt
+:instalar_librerias
+echo.
+echo      [#] Instalando librerias desde requirements.txt...
+echo.
+
+python -m pip install --upgrade pip
+python -m pip install -r colorama pillow
+echo      [+] Librerias instaladas correctamente (si no viste errores arriba).
+echo.
+pause
+goto Main
 
 :ejecutar_blurkms
+cls
 cd /d "%~dp0"
-if exist "Blur.py" (
-    echo _-_ Verificando si colorama & pillow están instalados...
-    python -c "import colorama" 2>nul
-    if %errorlevel% neq 0 (
-        echo Colorama no está instalado. Instalándolo ahora...
-        goto instalador_librerias
-    )
-    python -c "import pillow" 2>nul
-    if %errorlevel% neq 0 (
-        echo Pillow no está instalado. Instalándolo ahora...
-        goto instalador_librerias
-    )
-
-    echo.
-    echo _-_ Ejecutando BlurKMS...
-    start "BlurKMS v3.3 by NesAnTime" python Blur.py
-    exit /b
-) else (
-    echo No se encontro Blur.py
+if not exist Blur.py (
+    echo      [x] El archivo Blur.py no se encontro en la carpeta actual.
     pause
     goto Main
 )
-pause
+
+echo      [#] Verificando dependencias necesarias...
+
+python -c "import colorama" 2>nul
+if %errorlevel% neq 0 (
+    echo       [###] - Colorama no esta instalado. Instalandolo...
+    python -m pip install colorama
+)
+
+python -c "import PIL" 2>nul
+if %errorlevel% neq 0 (
+    echo       [###] - Pillow no esta instalado. Instalandolo...
+    python -m pip install pillow
+)
+
+echo.
+echo       [#] Ejecutando Blur_KMS...
+start "Blur_KMS v3.4 by NesAnTimes" python Blur.py
+exit /b
 
 :salir
-echo Saliendo del programa...
+echo       [##] Cerrando el launcher...
+timeout /t 2 >nul
 exit

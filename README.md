@@ -24,6 +24,7 @@ Activar Windows y Office ¡Nunca Ha Sido Tan Facil!<br></br>
     | Rediseño de pagina de claves genericas de office.
     | Manejo de errores pulido.
     | Animacion de inicio.
+    || Actualizacion/Parche de Errores (Lanzador Blur_KMS 3.4)
 ```
 
 ## Descripción
@@ -61,14 +62,19 @@ El menú del Programa Principal (Blur.py) es muy sencillo y se puede entender a 
 
 
 ```bash
-# NOTA 1: El Programa No se Ejecutara Si no le brinda permisos de administracion, Blur-KMS Tratara de Obtener Su Permiso (Acepte los permisos para evitar errores).
+# NOTA 1: 
+El Programa No se Ejecutara Si no le brinda permisos de administracion, Blur-KMS Tratara de Obtener Su Permiso (Acepte los permisos para evitar errores).
 
-# NOTA 2: La Herramienta Instalara Automaticamente La Libreria Colorama & Pillow, Unas Librerias de Python Meramente Esteticas.
+# NOTA 2: 
+La Herramienta Instalara Automaticamente La Libreria Colorama & Pillow, Unas Librerias de Python Meramente Esteticas.
 
-# NOTA 3: Si al Ejecutar "Executable.bat" y Elejir la opcion 1 (Ejecutar Blur), Lanza cualquier error y ya instalo python, lo mas probable es que no se instalaron automaticamente las librerias nesesarias para que el programa funcione, estas son Colorama & Pillow. (Si Continua Fallando Instalelas manualmente).
+# NOTA 3: 
+Si al Ejecutar "Executable.bat" y Elejir la opcion 1 (Ejecutar Blur), Lanza cualquier error y ya instalo python, lo mas probable es que no se instalaron automaticamente las librerias nesesarias para que el programa funcione, estas son Colorama & Pillow. (Si Continua Fallando Instalelas manualmente).
 
-# NOTA 4: Otro problema comun es al finalizar la instalacion de python, este no se agrege automaticamente al PACH de windows y tendra que moverlo manualmente al PACH.
-
-Licencia De Uso Libre, Prohibido de Modificacion y/o Venta de este.
+# NOTA 4: 
+Otro problema comun es al finalizar la instalacion de python, este no se agrege automaticamente al PACH de windows y tendra que moverlo manualmente al PACH.
 ```
+
+#### Licencia De Uso Libre, Prohibido de Modificacion y/o Venta de este.
+
 by NesAnTime.
