@@ -5,7 +5,7 @@ title Blur_KMS v3.4 Launcher by NesAnTimes
 net session >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
-    echo                     Lanzador Blur_KMS v3.4
+    echo                     Lanzador Blur_KMS v3.6
     echo.
     echo             Solicitando Permiso de Administrador
     echo                   Acepte para Continuar...
@@ -19,7 +19,7 @@ cls
 echo.
 echo.
 echo =====================================================================================================
-echo                                 MENU DE OPCIONES (Blur_KMS Lanzador v3.4)     
+echo                                 MENU DE OPCIONES (Blur_KMS Lanzador v3.7)     
 echo =====================================================================================================
 echo.
 echo       [1] Ejecutar Blur_KMS
@@ -42,6 +42,7 @@ pause
 goto Main
 
 :instalar_python
+set intentos = 0
 echo.
 echo.
 echo      [#] Verificando si Python esta instalado...
@@ -54,8 +55,18 @@ if %errorlevel% neq 0 (
         start /wait python-installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
         del python-installer.exe
         echo      [+] Python instalado correctamente.
+        goto instalar_python
     ) else (
-        echo      [X] Error al descargar el instalador de Python.
+        if "!intentos!"=="3" (
+            echo      [##] Error al descargar el instalador de Python. Abriendo el sitio web de Python para descargarlo manualmente.
+            timeout /t 3 >nul
+            start https://www.python.org/downloads/
+            pause
+        ) else (
+            echo      [X] Error al descargar el instalador de Python.
+            set /a intentos += 1
+        )
+        
     )
 ) else (
     echo      [+] Python ya esta instalado.
@@ -66,11 +77,10 @@ goto Main
 
 :instalar_librerias
 echo.
-echo      [#] Instalando librerias desde requirements.txt...
+echo      [#] Instalando librerias necesarias para Blur_KMS...
 echo.
-
 python -m pip install --upgrade pip
-python -m pip install -r colorama pillow
+python -m pip install colorama pillow requests
 echo      [+] Librerias instaladas correctamente (si no viste errores arriba).
 echo.
 pause
@@ -87,16 +97,30 @@ if not exist Blur.py (
 
 echo      [#] Verificando dependencias necesarias...
 
+python -m ensurepip --upgrade
+if %errorlevel% neq 0 (
+    echo       [###] - ERROR CRITICO. pip no esta instalado en el sistema
+    echo           [#] Instalelo manualmente desde el sitio oficial de Python o desde el instalador de Python.
+    pause
+    goto salir
+)
+
 python -c "import colorama" 2>nul
 if %errorlevel% neq 0 (
     echo       [###] - Colorama no esta instalado. Instalandolo...
-    python -m pip install colorama
+    goto instalar_librerias
 )
 
 python -c "import PIL" 2>nul
 if %errorlevel% neq 0 (
     echo       [###] - Pillow no esta instalado. Instalandolo...
-    python -m pip install pillow
+    goto instalar_librerias
+)
+
+python -c "import requests" 2>nul
+if %errorlevel% neq 0 (
+    echo       [###] - requests no esta instalado. Instalandolo...
+    goto instalar_librerias
 )
 
 echo.
