@@ -18,7 +18,7 @@
 ```bash
 # Version 4.0 Oficial --- PUBLICADA
  ⚠️ "Actualizaciones Lanzador BlurKMS v3.7: "
-    📲 Actualizacion/Parche de Errores Lanzador Blur_KMS (corrección de errores y majeno de posibles errores.)
+    📲 Actualizacion/Parche de Errores Lanzador Blur_KMS (corrección de errores y manejo de posibles errores.)
 
  ⚠️ "NOVEDADES BlurKMS v4.0:" 
     ➡️ Aumento de Seguridad
@@ -113,7 +113,7 @@ El menú del Programa Principal (Blur.py) es muy sencillo y se puede entender a 
 >*El Programa No se Ejecutara Si no le brinda permisos de administracion, `Blur-KMS` Tratara de Obtener Su Permiso (Acepte los permisos para evitar errores).*
 
 >#### ***🗒️ NOTA 2:***  
->*La Herramienta Instalara Automaticamente La Libreria Colorama & Pillow, Unas Librerias de Python Meramente Esteticas.*
+>*La Herramienta Instalara Automaticamente La Libreria Requests, Colorama & Pillow, Unas Librerias de Python Meramente Esteticas.*
 
 >#### ***🗒️ NOTA 3:*** 
 >*Si al Ejecutar `Executable.bat` y Elejir la opcion 1 (Ejecutar Blur), Lanza cualquier error y ya instalo python, lo mas probable es que no se instalaron automaticamente las librerias nesesarias para que el programa funcione, estas son Colorama & Pillow. (Si Continua Fallando Instalelas manualmente).*
