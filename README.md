@@ -3,7 +3,7 @@
 <p align="center">Blur-KMS es una herramienta de línea de comandos diseñada para facilitar la Instalacion de Claves KMS de Windows y Office mediante KMS (Key Management Service).</p>
 
 <p align="center">
-  <a href="#############"><img src="https://img.shields.io/badge/Version Disponible-4.0 Oficial-0d7ea1?style=for-the-badge&&logo=gitlab&logoColor=white"></a><br>
+  <a href="#############"><img src="https://img.shields.io/badge/Version Disponible-4.1 Oficial-0d7ea1?style=for-the-badge&&logo=gitlab&logoColor=white"></a><br>
   <a href="https://github.com/NesANTIME"> <img src="https://img.shields.io/badge/Desarrollador-Nesantime-brightgreen?style=for-the-badge&logo=github&logoColor=black"></a>
 </p>
 
@@ -13,7 +13,7 @@
   <br>
 
 *<h5>⬆️ 📆 Actualizaciones Mas recientes</h5>* 
-<a href = "https://nesantimeproyect.blogspot.com/p/blurkms-v40-que-hay-de-nuevo.html">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.0*</a>
+<a href = "https://nesantimeproyect.blogspot.com/p/blurkms-v40-que-hay-de-nuevo.html">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.1*</a>
 
 ```bash
 # Version 4.0 Oficial --- PUBLICADA
@@ -21,6 +21,8 @@
     📲 Actualizacion/Parche de Errores Lanzador Blur_KMS (corrección de errores y manejo de posibles errores.)
 
  ⚠️ "NOVEDADES BlurKMS v4.0:" 
+    ℹ️ "BlurKMS v4.1:" Parche de Errores en activacion de Office.
+
     ➡️ Aumento de Seguridad
        🔜 shlex.split() en Command() para evitar ejecución arbitraria de comandos maliciosos (💣 inyección de comandos).
        🔜 Se Integro un verificador de archivos que permite la buena ejecucion de BlurKMS ante perdida o borrado de archivos.
@@ -54,7 +56,7 @@
     ➡️ Animacion de inicio.
 ```
 
-<a href = "https://nesantimeproyect.blogspot.com/p/blurkms-v40-que-hay-de-nuevo.html">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.0*</a>
+<a href = "https://nesantimeproyect.blogspot.com/p/blurkms-v40-que-hay-de-nuevo.html">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.1*</a>
 </details>
 
 <br></br>
@@ -113,7 +115,7 @@ El menú del Programa Principal (Blur.py) es muy sencillo y se puede entender a 
 >*El Programa No se Ejecutara Si no le brinda permisos de administracion, `Blur-KMS` Tratara de Obtener Su Permiso (Acepte los permisos para evitar errores).*
 
 >#### ***🗒️ NOTA 2:***  
->*La Herramienta Instalara Automaticamente La Libreria Requests, Colorama & Pillow, Unas Librerias de Python Meramente Esteticas.*
+>*La Herramienta Instalara Automaticamente La Libreria Colorama & Pillow, Unas Librerias de Python Meramente Esteticas.*
 
 >#### ***🗒️ NOTA 3:*** 
 >*Si al Ejecutar `Executable.bat` y Elejir la opcion 1 (Ejecutar Blur), Lanza cualquier error y ya instalo python, lo mas probable es que no se instalaron automaticamente las librerias nesesarias para que el programa funcione, estas son Colorama & Pillow. (Si Continua Fallando Instalelas manualmente).*

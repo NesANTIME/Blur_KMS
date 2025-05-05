@@ -1,6 +1,6 @@
 {   
     "Versiones_BlurKMS": [
-        "Blur_KMS V 4.0 (NesAnTime)", "https://raw.githubusercontent.com/NesANTIME/Blur_KMS/refs/heads/main/Scritps/BD_BlurKMS.json"
+        "Blur_KMS V4.1 (NesAnTime)", "https://raw.githubusercontent.com/NesANTIME/Blur_KMS/refs/heads/main/Scritps/BD_BlurKMS.json"
     ],
 
     "Rutas_Archivos_BlurKMS": [
@@ -60,9 +60,9 @@
     ],
 
     "Converter_Lisencevolumen_Office": {
-        "MicrosoftOffice2016": "for /f %x in ('dir /b ..\\root\\Licenses16\\proplusvl_kms*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\root\\Licenses16\\%x\"",
-        "MicrosoftOffice2021":"for /f %x in ('dir /b ..\\root\\Licenses16\\ProPlus2021VL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\root\\Licenses16\\%x\"",
-        "MicrosoftOffice2019":"for /f %x in ('dir /b ..\\root\\Licenses16\\ProPlus2019VL*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\root\\Licenses16\\%x\""
+        "MicrosoftOffice2016": "for /f %x in ('dir /b ..\\\\root\\\\Licenses16\\\\proplusvl_kms*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\\\root\\\\Licenses16\\\\%x\"",
+        "MicrosoftOffice2021": "for /f %x in ('dir /b ..\\\\root\\\\Licenses16\\\\ProPlus2021VL_KMS*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\\\root\\\\Licenses16\\\\%x\"",
+        "MicrosoftOffice2019": "for /f %x in ('dir /b ..\\\\root\\\\Licenses16\\\\ProPlus2019VL*.xrm-ms') do cscript ospp.vbs /inslic:\"..\\\\root\\\\Licenses16\\\\%x\""
     },
 
     "Activador_MicrosoftOffice2016": [

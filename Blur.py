@@ -3,16 +3,17 @@ import sys
 import json
 import time
 import shlex
+import ctypes
 import winreg
 import requests
 import subprocess
-import tkinter as tk
 import platform as plataform
-from PIL import Image, ImageTk
 from colorama import Fore, init, Style
 init()
 
 def Icon():
+    data = Load_BD()
+    Version = data["Versiones_BlurKMS"][0]
     clear()
     print(" \n")
     print(Fore.CYAN + "    ██████╗ ██╗     ██╗   ██╗██████╗               ██╗  ██╗███╗   ███╗███████╗")
@@ -21,7 +22,7 @@ def Icon():
     print("    ██╔══██╗██║     ██║   ██║██╔══██╗    ╚════╝    ██╔═██╗ ██║╚██╔╝██║╚════██║")
     print("    ██████╔╝███████╗╚██████╔╝██║  ██║              ██║  ██╗██║ ╚═╝ ██║███████║")
     print("    ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝              ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝")
-    print(Fore.BLUE + f"      {Fore.CYAN + Style.DIM}Blur-KMS v4.0{Fore.BLUE + Style.NORMAL} By NesAnTime" + Fore.WHITE)
+    print(Fore.BLUE + f"      {Fore.CYAN + Style.DIM + Version +Fore.BLUE + Style.NORMAL} By NesAnTime" + Fore.WHITE)
 
 def clear():
     if plataform.system() == "Windows":
@@ -51,6 +52,9 @@ def Command(CMD, mode):
         subprocess.run(shlex.split(CMD), shell=True)
     elif mode == "cmd_ospp":
         Ospp_rut = Rut_OSPP()
+        if Ospp_rut is None:
+            print(Fore.RED + "[!] Error: No se encontró el script OSPP.VBS necesario para activar Office." + Fore.RESET)
+            return
         subprocess.run(f'cscript "{Ospp_rut}" {CMD}', shell=True, check=True)
     elif mode == "Shell":
         subprocess.run(shlex.split(CMD), shell=True, capture_output=True, text=True)
@@ -61,7 +65,20 @@ def Command(CMD, mode):
             except Exception as e:
                 return str(e)
     else:
-        subprocess.run(shlex.split(CMD), shell=True, check=True, capture_output=True, text=True)
+        subprocess.run(CMD, shell=True, check=True, capture_output=True, text=True)
+
+def Lanzador():
+    user32 = ctypes.windll.user32
+    kernel32 = ctypes.windll.kernel32
+    hWnd = kernel32.GetConsoleWindow()
+    pantalla_ancho = user32.GetSystemMetrics(0)
+    pantalla_alto = user32.GetSystemMetrics(1)
+
+    ancho_ventana = 800
+    alto_ventana = 500
+    x = int((pantalla_ancho - ancho_ventana) / 2)
+    y = int((pantalla_alto - alto_ventana) / 2)
+    ctypes.windll.user32.MoveWindow(hWnd, x, y, ancho_ventana, alto_ventana, True)
 
     
 # VERIFICADORES ------------------------------------------
@@ -148,9 +165,9 @@ def Update():
             if VerLocal == V_NewUp:
                 return f"{Fore.RESET + Style.RESET_ALL}"
             else:
-                return f"{Fore.CYAN + Style.BRIGHT}[!] {Fore.WHITE}Hay una nueva version disponible {Style.DIM + V_NewUp + Fore.GREEN} {Style.BRIGHT}¡Descargala YA!{Fore.RESET + Style.NORMAL}\n"
+                return f"\n   {Fore.CYAN + Style.BRIGHT}[!] {Fore.WHITE}Hay una nueva version disponible {Style.DIM + V_NewUp + Fore.GREEN} {Style.BRIGHT}¡Descargala YA!{Fore.RESET + Style.NORMAL}\n"
         except Exception as e:
-            print(f"{Fore.RED}[!] Error al leer el archivo local {VerLocal}: {e}")
+            print(f"{Fore.RED}   [!] Error al leer el archivo local {VerLocal}: {e}")
             
     V_NewUp = V_NewVer(VerNew)
     if V_NewUp is not None:
@@ -172,7 +189,7 @@ def SO_Edit():
 
     while True:
         try:
-            opc = input("\nSeleccione una opcion: ")
+            opc = input("\nSeleccione una opcion: ".strip())
 
             if opc.isdigit():
                 opcion = int(opc)
@@ -219,20 +236,22 @@ def Funcion_ActivationSO(SO_Version, KMS_Code):
 
 def Funcion_ActivationOffice(Office):
     print(Fore.GREEN + "\n[!] Iniciando Instalacion de Claves KMS En Office... " + Fore.WHITE)
-    data = Load_BD()
-    code = data.get("Converter_Lisencevolumen_Office", {})
     Office_Ruta()
     Ospp_rut = Rut_OSPP()
-    refresh(2)
+    data = Load_BD()
 
     print(Fore.GREEN + "\n[!] Convirtiendo Office a Licencia Volumen... ")
+    codeLisense = data.get("Converter_Lisencevolumen_Office", {})
+    code = codeLisense.get(Office, "Clave no encontrada")
+    Command(code, mode = "Shell")
 
-    comando = code.get(Office, "Clave no encontrada")
-    Command(comando, mode = "Shell")
+    refresh(2)
+
+    print(Fore.GREEN + "\n[!] Instalando Clave KMS... " + Fore.WHITE)
+    
     
     print(Style.DIM + "  | Accion Ejecutada Exitosamente..." + Style.NORMAL)
     refresh(2)
-    print(Fore.GREEN + "\n[!] Activando Clave... " + Fore.WHITE)
 
     print("\n [!!] Habilitando Registros \n " + Style.DIM)
 
@@ -250,6 +269,7 @@ def Funcion_ActivationOffice(Office):
 
     if "ERROR" in exit or "No Office KMS licenses were found" in exit:
         print(Fore.RED + "\n[!] Activación fallida. Revisa los errores:\n" + Fore.YELLOW + exit + Fore.WHITE)
+        print(Fore.GREEN + Style.DIM + f"[!] Es posible que ya office este activado." + Style.NORMAL)
     else:
         print(Fore.GREEN + Style.DIM + f"[!] Activacion Completada. Activado Con Exito.")
 
@@ -271,7 +291,7 @@ def Main_KMSWindows(SO_Version, SO_Bits):
         print(f"{Style.DIM}          [2]{Style.NORMAL} Cambiar Arquitectura de Windows")
         print(f"{Style.DIM}          [3]{Style.NORMAL} Continuar Con Activacion de Windows")
 
-        opc = input(f"\n{Fore.GREEN}     [¡] Esperando Opcion: " + Style.NORMAL + Fore.WHITE)
+        opc = input(f"\n{Fore.GREEN}     [¡] Esperando Opcion: " + Style.NORMAL + Fore.WHITE.strip())
 
         if (opc == "1") or (opc == "Windows") or (opc == "WINDOWS"):
             SO_Version = SO_Edit()
@@ -280,11 +300,11 @@ def Main_KMSWindows(SO_Version, SO_Bits):
         elif (opc == "2") or (opc == "Bits") or (opc == "BITS"):
             print(Fore.GREEN +"\n[!] Su Sistema Operativo: "+ Style.DIM + SO_Version + Style.NORMAL + " Es de " + Style.DIM + Fore.WHITE + "[1] " + Style.NORMAL + "32 bits  -  " + Style.DIM + "[2] " + Style.NORMAL + "64 bits")
             try:
-                Mip = int(input(f"  [!] Ingrese Su Opcion: {Style.DIM}"))
+                Mip = int(input(f"  [!] Ingrese Su Opcion: {Style.DIM}").strip())
                 print(Style.RESET_ALL)
                 while (Mip < 1) or (Mip > 2):
                     print("Opcion Ingresada Invalida.")
-                    Mip = int(input(f"  [!] Ingrese Nuevamente Su Opcion: {Style.DIM}"))
+                    Mip = int(input(f"  [!] Ingrese Nuevamente Su Opcion: {Style.DIM}").strip())
                 if Mip == 1:
                     SO_Bits = "32 bits"
                 elif Mip == 2:
@@ -294,12 +314,21 @@ def Main_KMSWindows(SO_Version, SO_Bits):
                 refresh(2)
             clear()
 
-        elif (opc == "3") or (opc == "continuar") or (opc == "Continuar"):
+        elif (opc == "3") or (opc == "continuar") or (opc == "Continuar") or (opc == ""):
             clear()
             Icon()
             print(Fore.YELLOW + Style.DIM + "\n [!] Información Obtenida del Sistema:" + Style.NORMAL)
             print(f"      {Style.BRIGHT + Fore.CYAN}- Sistema Operativo: {Style.NORMAL + SO_Version}")
             print(f"      {Style.BRIGHT + Fore.CYAN}- Arquitectura: {Style.NORMAL + SO_Bits} \n")
+
+            while True:
+                if Internet_Conexion() == True:
+                    print(Fore.GREEN + Style.DIM + "\n   ----- [!] Conectado a Internet." + Fore.WHITE + Style.NORMAL)
+                    break
+                else:
+                    print(Fore.RED + Style.DIM + "\n    ----- [!] No se ha detectado conexión a Internet." + Fore.WHITE)
+                    print("   - Intentelo Nuevamente Conectado a Internet, Se Intentara Conectar Automaticamente.")
+                    refresh(2)
 
             print(Fore.GREEN + "[!] Iniciando Programa de Activacion...")
 
@@ -357,7 +386,7 @@ def Main_KMSOffice(Of_Exists):
 
         while True:
             try:
-                opc = int(input(Fore.YELLOW + Style.DIM + f"[¡] Elija la Opcion Requerida: "+ Style.NORMAL + Fore.WHITE))
+                opc = int(input(Fore.YELLOW + Style.DIM + f"[¡] Elija la Opcion Requerida: "+ Style.NORMAL + Fore.WHITE).strip())
                 if (opc == 1):
                     Execute(Of_Version = "MicrosoftOffice2016")
                     break
@@ -389,7 +418,7 @@ def Main():
     print(f"    {Fore.GREEN + Style.DIM}[3] {Fore.WHITE + Style.NORMAL}Salir")
 
     while True:
-        opc = input(Style.BRIGHT + "\n  - Ingrese Su Opcion: " + Style.NORMAL)
+        opc = input(Style.BRIGHT + "\n  - Ingrese Su Opcion: " + Style.NORMAL).strip()
 
         if (opc == "1"):
             refresh(1)
@@ -413,6 +442,8 @@ def Main():
             opc = print(Fore.RED + "[!] Error. Opcion Invalida." + Fore.WHITE)
         
 
+
+Lanzador()
 if os.path.exists("Scritps/Start.py"):
     animation = subprocess.run(["python", "Scritps/Start.py"])
     if animation.returncode == 0:

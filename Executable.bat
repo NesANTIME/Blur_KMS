@@ -1,11 +1,11 @@
 @echo off
 setlocal enabledelayedexpansion
-title Blur_KMS v3.4 Launcher by NesAnTimes
+title Blur_KMS v3.8 Launcher by NesAnTime
 
 net session >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
-    echo                     Lanzador Blur_KMS v3.6
+    echo                     Lanzador Blur_KMS v3.8
     echo.
     echo             Solicitando Permiso de Administrador
     echo                   Acepte para Continuar...
@@ -125,7 +125,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo       [#] Ejecutando Blur_KMS...
-start "Blur_KMS v3.4 by NesAnTimes" python Blur.py
+start "Blur_KMS v4.1 by NesAnTime" python Blur.py
 exit /b
 
 :salir
