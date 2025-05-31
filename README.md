@@ -17,8 +17,8 @@
 
 ```bash
 # Version 4.0 Oficial --- PUBLICADA
- ⚠️ "Actualizaciones Lanzador BlurKMS v3.7: "
-    📲 Actualizacion/Parche de Errores Lanzador Blur_KMS (corrección de errores y manejo de posibles errores.)
+ ⚠️ "Actualizaciones Lanzador BlurKMS v4.0: "
+   📲 Actualizacion Lanzador Blur_KMS (Usa Aplicacion .exe para mas versatilidad.)
 
  ⚠️ "NOVEDADES BlurKMS v4.0:" 
     ℹ️ "BlurKMS v4.1:" Parche de Errores en activacion de Office.
@@ -100,10 +100,7 @@ Descarga la última versión Disponible/Estable disponible.
 Descomprime el archivo ".zip" descargado y entra a la carpeta llamada: "Blur-KMS".
 
 # ⚙️ Ejecutar el Programa:
-Ejecuta el archivo "Executable.bat" Para Iniciar el Lanzador de Blur_KMS
-
-    → Aparecerá una solicitud de permisos de 
-      administrador (¡Acepte para continuar!).  
+Ejecuta el archivo "LanzadorBlur.exe" Para Iniciar el Lanzador de Blur_KMS.  
 
     → Luego, elige la opción que necesites.
 ```
