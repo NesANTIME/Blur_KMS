@@ -13,7 +13,7 @@
   <br>
 
 *<h5>⬆️ 📆 Actualizaciones Mas recientes</h5>* 
-<a href = "https://proyectnesantime.neocities.org/Proyectos/BlurKMS/Versiones_Info/BlurKMS-v4.1">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.1*</a>
+<a href = "https://proyectnesantime.neocities.org/Proyectos/BlurKMS/Versiones_Info/BlurKMS-v4.1" target="_blank">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.1*</a>
 
 ```bash
 # Version 4.0 Oficial --- PUBLICADA
@@ -56,7 +56,7 @@
     ➡️ Animacion de inicio.
 ```
 
-<a href = "https://proyectnesantime.neocities.org/Proyectos/BlurKMS/Versiones_Info/BlurKMS-v4.1">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.1*</a>
+<a href = "https://proyectnesantime.neocities.org/Proyectos/BlurKMS/Versiones_Info/BlurKMS-v4.1" target="_blank">*<u>Click</u> Para ver mas cambios, mejoras y diferencias  entre BlurKMS v3.3 y v4.1*</a>
 </details>
 
 <br></br>
