@@ -1,9 +1,9 @@
-![Diagramita](Scritps/Banner_Lanzador.png)
+![Diagramita](.recursos/Banner.png)
 <h1 align="center">Blur_KMS</h1>
 <p align="center">Blur-KMS es una herramienta de línea de comandos diseñada para facilitar la Instalacion de Claves KMS de Windows y Office mediante KMS (Key Management Service).</p>
 
 <p align="center">
-  <a href="#############"><img src="https://img.shields.io/badge/Version Disponible-4.8 Oficial-0d7ea1?style=for-the-badge&&logo=gitlab&logoColor=white"></a><br>
+  <a href="#############"><img src="https://img.shields.io/badge/Version Disponible-5.0 Oficial-0d7ea1?style=for-the-badge&&logo=gitlab&logoColor=white"></a><br>
   <a href="https://github.com/NesANTIME"> <img src="https://img.shields.io/badge/Desarrollador-Nesantime-brightgreen?style=for-the-badge&logo=github&logoColor=black"></a>
 </p>
 
