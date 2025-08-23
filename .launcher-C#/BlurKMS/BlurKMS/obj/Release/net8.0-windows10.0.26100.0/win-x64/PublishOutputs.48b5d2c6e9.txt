@@ -1,0 +1,2 @@
+C:\Users\juanc\OneDrive\Documentos\Personal\Proyectos\Blur_KMS\Version 5.0\.launcher-C#\BlurKMS\BlurKMS\bin\Release\net8.0-windows10.0.26100.0\win-x64\publish\BlurKMS.pdb
+C:\Users\juanc\OneDrive\Documentos\Personal\Proyectos\Blur_KMS\Version 5.0\.launcher-C#\BlurKMS\BlurKMS\bin\Release\net8.0-windows10.0.26100.0\win-x64\publish\BlurKMS.exe

@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <ApplicationIcon>BlurKMS.ico</ApplicationIcon>
+    <Title>BlurKMS</Title>
+    <Version>5.0</Version>
+    <Authors>$(AssemblyName)</Authors>
+    <Company>NesAnTime Proyect</Company>
+    <Description>Lanzador de BlurKMS</Description>
+    <Copyright>Licence BlurKMS </Copyright>
+    <PackageIcon>BlurKMS.png</PackageIcon>
+    <PackageLicenseFile>LISENCE.md</PackageLicenseFile>
+    <StartupObject>PythonLauncher.Program</StartupObject>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="BlurKMS.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\..\..\..\Pictures\Proyectos GIMP\BlurKMS.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\LISENCE.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

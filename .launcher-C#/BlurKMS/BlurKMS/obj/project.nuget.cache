@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "QaGqwMR4LNo=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\juanc\\OneDrive\\Documentos\\Personal\\Proyectos\\Blur_KMS\\Version 5.0\\.launcher-C#\\BlurKMS\\BlurKMS\\BlurKMS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\juanc\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.19\\microsoft.net.illink.tasks.8.0.19.nupkg.sha512",
+    "C:\\Users\\juanc\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\8.0.19\\microsoft.netcore.app.runtime.win-x64.8.0.19.nupkg.sha512",
+    "C:\\Users\\juanc\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\8.0.19\\microsoft.windowsdesktop.app.runtime.win-x64.8.0.19.nupkg.sha512",
+    "C:\\Users\\juanc\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\8.0.19\\microsoft.aspnetcore.app.runtime.win-x64.8.0.19.nupkg.sha512",
+    "C:\\Users\\juanc\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.26100.57\\microsoft.windows.sdk.net.ref.10.0.26100.57.nupkg.sha512"
+  ],
+  "logs": []
+}
