@@ -1,0 +1,11 @@
+{   
+    "BlurKMS": [
+        "Version 5.0", "https://raw.githubusercontent.com/NesANTIME/Blur_KMS/refs/heads/main/Scritps/BD_BlurKMS.json"
+    ],
+
+    "Rutas_Archivos_BlurKMS": [
+        "resources\\Banner.png", "resources\\core\\core_blurkms.py", "resources\\core\\interprete\\python-3.13.7-amd64\\python.exe", "resources\\core\\core.json", "resources\\core\\config_blurkms.json",
+        "resources\\core\\tools\\office_active.py", "resources\\core\\tools\\windows_active.py"
+    ]
+
+}
