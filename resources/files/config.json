@@ -1,0 +1,17 @@
+{
+    "information": {
+        "icon": [
+            "▄▄▄▄· ▄▄▌  ▄• ▄▌▄▄▄      ▄ •▄ • ▌ ▄ ·. .▄▄ · ", "▐█ ▀█▪██•  █▪██▌▀▄ █·    █▌▄▌▪·██ ▐███▪▐█ ▀. ",
+            "▐█▀▀█▄██▪  █▌▐█▌▐▀▀▄     ▐▀▀▄·▐█ ▌▐▌▐█·▄▀▀▀█▄", "██▄▪▐█▐█▌▐▌▐█▄█▌▐█•█▌    ▐█.█▌██ ██▌▐█▌▐█▄▪▐█",
+            "·▀▀▀▀ .▀▀▀  ▀▀▀ .▀  ▀    ·▀  ▀▀▀  █▪▀▀▀ ▀▀▀▀ "
+        ],
+
+        "version": "6.0.0"
+    },
+
+    "connections": {
+        "configurations_url_windows": "https://gist.githubusercontent.com/NesANTIME/80f94ad178bdd442f8377a643cfe3e2a/raw/config_BlurKMS"
+    },
+
+    "servers": [ "8.8.8.8", "kms.digiboy.ir", "1.1.1.1" ]
+}

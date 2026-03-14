@@ -1,0 +1,13 @@
+venv/
+.vevn/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Cache en subdirectorios
+resources/**/__pycache__/
+resources/**/**/*.pyc
