@@ -7,6 +7,10 @@
   <a href="https://github.com/NesANTIME"> <img src="https://img.shields.io/badge/Desarrollador-Nesantime-brightgreen?style=for-the-badge&logo=github&logoColor=black"></a>
 </p>
 
+> **⚠️ Nota Importante:**
+> Los métodos de activación KMS38 han sido parcheados permanentemente por Microsoft mediante las actualizaciones de seguridad de noviembre de 2025 (específicamente KB5068861 y KB5067112). Actualmente, la herramienta no es funcional en sistemas Windows 10/11 actualizados, por lo cual se ha decidido archivar el repositorio, poniendo fin a las actualizaciones de este mismo.
+
+
 Para mas informacion puede visitar la pagina de <a href="https://nesantimeproyect.netlify.app/proyectos/blurkms">¡novedades!</a> 
 
 <br></br>
